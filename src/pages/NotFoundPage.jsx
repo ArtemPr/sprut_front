@@ -12,7 +12,6 @@ const NotFoundPage = () => {
       }}
     >
 
-
       <Content
         className="site-layout-background"
         style={{
@@ -24,7 +23,7 @@ const NotFoundPage = () => {
       >
         <h1>notFoundPage 404</h1>
         <p>
-          <Link to="/">Рабочий стол</Link>
+          <Link to="">Рабочий стол</Link>
         </p>
       </Content>
     </Layout>

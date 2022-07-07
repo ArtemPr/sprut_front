@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
-import { Layout, Menu, Typography, Table } from 'antd';
+import { Layout, Menu, Typography, Table, Divider } from 'antd';
 import ReactDragListView from "react-drag-listview";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 const { Content, Sider } = Layout;
 
 
@@ -13,12 +14,14 @@ const { Content, Sider } = Layout;
 //         title: "Name",
 //         dataIndex: "name",
 //         key: "name",
+//         //    render: text => <a href="javascript:;">{text}</a>
 //         render: text => <a href="javascript:;">{text}</a>
 //     },
 //     {
 //         title: "Age",
 //         dataIndex: "age",
-//         key: "age"
+//         key: "age",
+//         // render: text => <Link to={`/users/${text}`}>{text}</Link>
 //     },
 //     {
 //         title: "Address",
@@ -65,89 +68,9 @@ const { Content, Sider } = Layout;
 // test drag table
 
 
-
-// const items1 = ['1', '2', '3'].map((key) => ({
-//     key,
-//     label: `nav ${key}`,
-// }));
-// const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-//     const key = String(index + 1);
-//     return {
-//         key: `sub${key}`,
-//         icon: React.createElement(icon),
-//         label: `subnav ${key}`,
-//         items: new Array(4).fill(null).map((_, j) => {
-//             const subKey = index * 4 + j + 1;
-//             return {
-//                 key: subKey,
-//                 label: `option${subKey}`,
-//             };
-//         }),
-//     };
-// });
-
-
-
-const columns2 = [
-    {
-        title: 'id',
-        dataIndex: 'program_id',
-        key: 'program_id',
-    },
-    {
-        title: 'Название',
-        dataIndex: 'program_name',
-        key: 'program_name',
-    },
-    {
-        title: 'Длительность',
-        dataIndex: 'length_hour',
-        key: 'length_hour',
-    },
-
-    {
-        title: 'Action',
-        key: 'action',
-        render: (text, record) => (
-            <span>
-                <a>Delete</a>
-            </span>
-        ),
-    },
-];
-
-const data2 = [
-    // {
-    //     key: 'program_id',
-    //     name: 'John Brown',
-    //     age: 32,
-    //     address: 'New York No. 1 Lake Park',
-    //     tags: ['nice', 'developer'],
-    // },
-    // {
-    //     key: '2',
-    //     name: 'Jim Green',
-    //     age: 42,
-    //     address: 'London No. 1 Lake Park',
-    //     tags: ['normal'],
-    // },
-    // {
-    //     key: '3',
-    //     name: 'Joe Black',
-    //     age: 32,
-    //     address: 'Sidney No. 1 Lake Park',
-    //     tags: ['cool', 'teacher'],
-    // },
-];
-
-
-
-const urlSprutData = 'http://sprut.niidpo.ru/api/program?page=1&max_result=4000&t=a78c9bd272533646ae84683a2eabb817';
-
-
 const UsersPage = () => {
 
-    //    const [columnState, setColumnState] = useState(columns);
+    // const [columnState, setColumnState] = useState(columns);
 
     // const onDragEnd = (fromIndex, toIndex) => {
     //     const columnsCopy = columnState.slice();
@@ -156,45 +79,11 @@ const UsersPage = () => {
     //     setColumnState(columnsCopy);
     // };
 
-    const [sprutData, setSprutData] = useState(null);
-
-    useEffect(() => {
-        (async function () {
-            let data = await fetch(urlSprutData).then((result) => result.json());
-            setSprutData(data);
-            console.log('useEffect works');
-            console.log(sprutData);
-        })();
-    }, []);
-
-    console.log(sprutData);
-
     return (
         <>
-
             <Layout style={{
                 padding: '20px 0',
             }}>
-
-
-                {/* <Sider style={{
-                    backgroundColor: '#fff',
-                    height: '100vh',
-                    paddingTop: '60px'
-                }}>
-                    <Menu
-                        theme="light"
-                        mode="inline"
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
-                        style={{
-                            height: '80vh',
-                            borderRight: 0,
-                        }}
-                        items={items2}
-                    />
-
-                </Sider> */}
 
                 <Sider
                     theme="light"
@@ -234,8 +123,6 @@ const UsersPage = () => {
                         padding: '0 24px 24px',
                     }}
                 >
-
-
                     <Content
                         className="site-layout-background"
                         style={{
@@ -263,14 +150,20 @@ const UsersPage = () => {
                         </div> */}
 
                         {/* // test drag table */}
-
-                        <Table style={{ marginTop: '20px' }} columns={columns2} dataSource={sprutData} rowKey='program_id' />
-
+                        <ul>
+                            <li>
+                                <Link to='John Brown'>John Brown</Link>
+                            </li>
+                            <li>
+                                <Link to='John Doe'>John Doe</Link>
+                            </li>
+                            <li>
+                                <Link to='Jane Brown'>Jane Brown</Link>
+                            </li>
+                        </ul>
                     </Content>
                 </Layout>
             </Layout>
-
-
         </>
     )
 }
