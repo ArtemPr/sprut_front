@@ -95,12 +95,12 @@ const columns2 = [
     {
         title: 'id',
         dataIndex: 'program_id',
-        key: 'program_id',
+        key: program_id,
     },
     {
         title: 'Название',
         dataIndex: 'program_name',
-        key: 'program_name',
+        key: program_name,
     },
     {
         title: 'Длительность',
