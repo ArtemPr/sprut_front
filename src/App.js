@@ -95,16 +95,16 @@ const columns2 = [
     {
         title: 'id',
         dataIndex: 'program_id',
-        key: program_id,
+        key: 'program_id',
     },
     {
         title: 'Название',
         dataIndex: 'program_name',
-        key: program_name,
+        key: 'program_name',
     },
     {
         title: 'Длительность',
-        dataIndex: 'length_hour',
+        dataIndex: 'length_hour' + 'program_id',
         key: 'length_hour',
     },
 
@@ -303,7 +303,7 @@ function App() {
 
                         {/* // test drag table */}
 
-                        <Table style={{ marginTop: '20px' }} columns={columns2} dataSource={sprutData} />
+                        <Table style={{ marginTop: '20px' }} columns={columns2} dataSource={sprutData} rowKey='program_id' />
 
                     </Content>
                 </Layout>
