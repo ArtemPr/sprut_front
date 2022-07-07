@@ -42,6 +42,7 @@
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.21.5",
-    "react-drag-listview": "^0.2.1"
+    "react-drag-listview": "^0.2.1",
+    "react-router-dom": "^6.3.0"
   }
 }
