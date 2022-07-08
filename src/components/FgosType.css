@@ -1,0 +1,80 @@
+.fgos-label {
+    width: 100% !important;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    font-size: .875rem;
+    font-weight: 500;
+}
+
+.form-select {
+    display: block;
+    width: 100%;
+    padding: 0.4375rem 2.25rem 0.4375rem 0.75rem;
+    -moz-padding-start: calc(.75rem - 3px);
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.4285714286;
+    color: inherit;
+    background-color: #fff;
+    background-image: url(data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%23a5a9b1%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M2 5l6 6 6-6%27/%3e%3c/svg%3e);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #d9dbde;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
+
+select {
+    word-wrap: normal;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+таблица стилей агента пользователя select:not(:-internal-list-box) {
+    background-color: buttonface;
+    overflow: visible !important;
+}

@@ -55,7 +55,7 @@ const PageLayout = () => {
                     <Space size='small' >
                         <UserOutlined />
 
-                        <span>Ivan Pupkin</span>
+                        <span>Ivan Ivanov</span>
                     </Space>
                 </div>
             </Header>
