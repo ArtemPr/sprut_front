@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+@import './custom/style/antd/theme.less';
 
 .App {
   text-align: center;
