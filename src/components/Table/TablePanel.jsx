@@ -1,16 +1,91 @@
 import React, { useState, useEffect } from 'react'
 import FgosType from '../FgosType';
 import { useLocation } from 'react-router-dom';
-import { Input, Button, Drawer, Tabs, Form, Select } from 'antd';
+import { Input, Button, Drawer, Tabs, Form, Select, AutoComplete } from 'antd';
 const { Search } = Input;
 const { Option } = Select;
 const { TabPane } = Tabs;
 
 const TablePanel = ({ selectedRow }) => {
     const [form] = Form.useForm();
+    const options = [
+        {
+            "id": 1,
+            "value": "Страховое дело"
+        },
+        {
+            "id": 2,
+            "value": "Банковское дело"
+        },
+        {
+            "id": 3,
+            "value": "Экономика"
+        },
+        {
+            "id": 4,
+            "value": "Менеджмент"
+        },
+        {
+            "id": 5,
+            "value": "Управление персоналом"
+        },
+        {
+            "id": 6,
+            "value": "Государственное и муниципальное управление (уровень бакалавриата)"
+        },
+        {
+            "id": 7,
+            "value": "Экономическая безопасность (уровень специалитета)"
+        },
+        {
+            "id": 8,
+            "value": "Социальная работа"
+        },
+        {
+            "id": 9,
+            "value": "Право и организация социального обеспечения"
+        },
+        {
+            "id": 10,
+            "value": "Правоохранительная деятельность"
+        }
+    ]
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    async function getH() {
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            // body: JSON.stringify({
+            //     title: 'foo',
+            //     body: 'bar',
+            //     userId: 1,
+            // }),
+            body: JSON.stringify({
+                id: '5016', name: '1111', type: 'Повышение квалификации', hidden: '15000'
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log('fakeserver', json));
+    }
+    getH();
+
+    const onFinish = async (values) => {
+        console.log('onFinish')
+        // var formValues = { ...values, hidden: hiddenInputValue, id: selectedRow };
+        // console.log('form data:', formValues);
+        //    var formValues = { id: '5016', name: '1111', type: 'Повышение квалификации', hidden: '15000' }
+        fetch(`http://sprut.niidpo.ru/api/update_program?t=a78c9bd272533646ae84683a2eabb817`, {
+            method: "POST",
+            body: JSON.stringify({
+                id: '5016', name: '1111', type: 'Повышение квалификации', hidden: '15000'
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then((response) => response.json())
+            .then((json) => console.log('sprut', json));
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -23,12 +98,35 @@ const TablePanel = ({ selectedRow }) => {
     // console.log(selectedItemUrl);
 
     const [rowServerData, setRowServerData] = useState('');
+    const [fgosSelectVisible, setFgosSelectVisible] = useState(false);
+    const [hiddenInputValue, setHiddenInputValue] = useState(100500);
 
-    console.log('rowServerData ', rowServerData);
+    const setHiddenInput = (data) => {
+        let filteredArr = options.filter(option => option.value === data);
+        let filteredId = null;
+        if (filteredArr.length > 0) {
+            filteredId = filteredArr[0]['id'];
+            //  setHiddenInputValue(filteredId);
+            setHiddenInputValue(filteredId)
+        }
+        console.log(filteredId);
+        console.log(hiddenInputValue);
+    }
+
+
+    //    console.log('rowServerData ', rowServerData);
 
     const [visible, setVisible] = useState(false);
 
     const onSearch = (value) => console.log(value);
+
+    const showFgosSelect = (key) => {
+        console.log(key);
+        if (key === 2 || 3) {
+            setFgosSelectVisible(true);
+        }
+
+    }
 
     const showDrawer = async () => {
         let data = await fetch(selectedItemUrl).then((result) => result.json());
@@ -41,7 +139,7 @@ const TablePanel = ({ selectedRow }) => {
     };
 
     const onChange = (key) => {
-        console.log(key);
+        //   console.log(key);
     };
 
 
@@ -76,6 +174,7 @@ const TablePanel = ({ selectedRow }) => {
 
                         name: rowServerData ? rowServerData.name : '',
                         type: rowServerData ? rowServerData.program_type.name_type : '',
+                        hidden: hiddenInputValue
                         // type: rowServerData.program_type.id
                     }}
                     onFinish={onFinish}
@@ -115,8 +214,47 @@ const TablePanel = ({ selectedRow }) => {
                             <p>Кликнули по {selectedRow}</p>
                         </TabPane>
                         <TabPane tab="ФГОС" key="2">
-                            Content of Tab Pane 2
-                            {/* <FgosType /> */}
+                            <Form.Item labelAlign="left" name="fgos" label="Тип образования"
+                            // rules={[{ required: true }]}
+                            >
+                                <Select onChange={showFgosSelect}
+                                    placeholder="Выберите тип образования"
+                                    allowClear
+
+                                // defaultValue={rowServerData ? rowServerData.program_type.name_type : '2'}
+                                >
+
+                                    <Option value="2">Среднее</Option>
+                                    <Option value="3">Высшее</Option>
+                                </Select>
+                            </Form.Item>
+
+                            <>
+                                {fgosSelectVisible ? <>
+                                    <Form.Item
+                                        labelAlign="left"
+                                        label="Выберите образование"
+                                        name="fgos-ed-f"
+                                    >
+                                        <AutoComplete
+                                            style={{
+                                                width: '100%'
+                                            }}
+                                            options={options}
+                                            placeholder="Выберите образование"
+                                            filterOption={(inputValue, option) =>
+                                                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                            }
+                                            onSelect={(data) => setHiddenInput(data)}
+                                        />
+                                    </Form.Item>
+
+                                    <input type="hidden" name='hidden' value={hiddenInputValue} />
+                                </> : ''}
+
+                            </>
+
+
                         </TabPane>
                     </Tabs>
 

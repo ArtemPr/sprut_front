@@ -9,7 +9,7 @@ const HomePage = () => {
             height: '100%',
             paddingTop: '120px',
             paddingBottom: '120px',
-            backgroundColor: '#f5f7fb;'
+            backgroundColor: '#f5f7fb'
         }}>
             <div className="container">
                 <MasonryDesktop />

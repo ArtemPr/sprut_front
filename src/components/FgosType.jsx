@@ -4,13 +4,13 @@ import './FgosType.css'
 const FgosType = () => {
     return (
         <>
-            <div class="mb-3 fgos-education fgos-education--show">
-                <label class="form-label">Выберите образование</label>
-                <div class="input-icon mb-3">
-                    <input type="text" value="" class="form-control fgos-filter"
+            <div className="mb-3 fgos-education fgos-education--show">
+                <label className="form-label">Выберите образование</label>
+                <div className="input-icon mb-3">
+                    <input type="text" value="" className="form-control fgos-filter"
                         placeholder="Выберите образование" />
-                    <span class="input-icon-addon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search"
+                    <span className="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search"
                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                             stroke="currentColor"
                             fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -20,8 +20,8 @@ const FgosType = () => {
                         </svg>
                     </span>
                 </div>
-                <input type="hidden" class="fgos-hidden" />
-                <ul class="fgos-education__list"></ul>
+                <input type="hidden" className="fgos-hidden" />
+                <ul className="fgos-education__list"></ul>
             </div>
         </>
     )

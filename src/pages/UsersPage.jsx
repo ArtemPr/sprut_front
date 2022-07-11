@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, Typography, Table, Divider } from 'antd';
 import ReactDragListView from "react-drag-listview";
+import ExelBtn from '../components/ExelBtn';
 import { useState } from 'react';
 const { Content, Sider } = Layout;
+
 
 
 
@@ -161,6 +163,7 @@ const UsersPage = () => {
                                 <Link to='Jane Brown'>Jane Brown</Link>
                             </li>
                         </ul>
+                        <ExelBtn>dsdsd</ExelBtn>
                     </Content>
                 </Layout>
             </Layout>
