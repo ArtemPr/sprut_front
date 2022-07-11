@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid lightgrey;
+  z-index: 5 !important;
 }
 
 .navbar {
@@ -58,6 +59,10 @@
   outline: 2px solid rgba(30, 41, 59, .5);
   padding: 30px;
   border-radius: 5px;
+}
+
+.desktop-item__name {
+  padding-top: 20px;
 }
 
 .desktop-item:hover {

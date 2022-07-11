@@ -1,5 +1,4 @@
 import React from 'react'
-
 import logo from '../assets/images/logo.svg';
 
 import { NavLink, Outlet } from 'react-router-dom';
@@ -12,7 +11,7 @@ const { Header } = Layout;
 
 const PageLayout = () => {
     return (
-        <Layout>
+        <Layout style={{ minHeight: '100vh' }}>
             <Header className="header" style={{
                 position: 'fixed',
                 zIndex: 1,

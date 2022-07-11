@@ -5,8 +5,8 @@ import { Col, Divider, Row } from 'antd';
 
 const DesktopItem = ({ name, link, picture }) => {
     return (
-        <Col span={6}>
-            <a className="desktop-item" href={link}>
+        <Col span={6} >
+            <a style={{ paddingTop: '50px', paddingBottom: '50px' }} className="desktop-item" href={link}>
                 {picture}
                 <p className="desktop-item__name">{name}</p>
                 {/* <p>{description}</p> */}
