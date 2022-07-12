@@ -171,7 +171,6 @@ const TablePanel = ({ selectedRow }) => {
                         span: 14,
                     }}
                     initialValues={{
-
                         name: rowServerData ? rowServerData.name : '',
                         type: rowServerData ? rowServerData.program_type.name_type : '',
                         hidden: hiddenInputValue

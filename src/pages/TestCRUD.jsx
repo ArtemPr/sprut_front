@@ -62,13 +62,14 @@ const TestCRUD = () => {
     const [visible, setVisible] = useState(false);
     const [dataSource, setDataSource] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
-    const [userData, setUserData] = useState('');
+    const [rowServerData, setRowServerData] = useState('');
 
     const onClose = () => {
         setVisible(false);
     };
 
     let baseUrl = `http://localhost:5000/users`;
+    let selectedItemUrl = `http://localhost:5000/users/${selectedId}`
 
     // Get all data
     useEffect(() => {
@@ -92,11 +93,11 @@ const TestCRUD = () => {
     }
 
     const showDrawer = async () => {
-        const userDataRaw = await fetch(`http://localhost:5000/users/${selectedId}`).then((result) => result.json());
-        console.log('userDataRaw ', userDataRaw);
-        setUserData(userDataRaw);
-        console.log('userData ', userData);
+        let userDataRaw = await fetch(selectedItemUrl).then((result) => result.json());
+        setRowServerData(userDataRaw);
         setVisible(true);
+        console.log('drawer selectedId ', selectedId)
+        console.log('rowServerData ', rowServerData);
     };
 
 
@@ -126,7 +127,7 @@ const TestCRUD = () => {
         console.log('onFinish', values);
         //   console.log('on F userData', userData);
         const userToEdit = await fetch(`http://localhost:5000/users/${selectedId}`)
-        console.log('userToEdit ', userData)
+        //    console.log('userToEdit ', userData)
         //  const updatedUser = { ...userToEdit, values } /*хрень какая-то*/
         const updatedUser = Object.assign(userToEdit, values);
         console.log('updatedUser ', updatedUser)
@@ -221,100 +222,76 @@ const TestCRUD = () => {
                                 Delete
                             </Button>
                         </Popconfirm>
-                        {/* <Button danger onClick={deleteRow}>
-                            Delete
-                        </Button> */}
                     </div>
 
                     <Drawer width="80%" title={`Edit user: id ${selectedId}`} placement="right" onClose={onClose} visible={visible}>
+                        {selectedId ? <>
+                            <Form
+                                id={rowServerData ? rowServerData.id : 1}
+                                name="basic"
+                                labelCol={{
+                                    flex: '110px',
+                                }}
+                                labelAlign="left"
+                                labelWrap
+                                wrapperCol={{
+                                    flex: 1,
+                                }}
+                                autoComplete="off"
 
-                        <Form
-                            onFinish={onFinish}
-                            name="wrap"
-                            labelCol={{
-                                flex: '110px',
-                            }}
-                            labelAlign="left"
-                            labelWrap
-                            wrapperCol={{
-                                flex: 1,
-                            }}
-                            colon={false}
-
-                            initialValues={{
-                                firstName: userData ? userData.firstName : '',
-                                lastName: userData ? userData.lastName : '',
-                                age: userData ? userData.age : '',
-                                email: userData ? userData.email : '',
-                                phone: userData ? userData.phone : '',
-                            }}
-                        >
-                            <Form.Item
-                                label="firstName"
-                                name="firstName"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
+                                initialValues={{
+                                    firstName: rowServerData ? rowServerData.firstName : '',
+                                    // firstName: selectedId,
+                                    lastName: rowServerData ? rowServerData.lastName : '',
+                                    age: rowServerData ? rowServerData.age : '',
+                                    email: rowServerData ? rowServerData.email : '',
+                                    phone: rowServerData ? rowServerData.phone : '',
+                                }}
+                                onFinish={onFinish}
                             >
-                                <Input />
-                            </Form.Item>
+                                <Form.Item
+                                    label="firstName"
+                                    name="firstName"
+                                >
+                                    <Input />
+                                </Form.Item>
 
-                            <Form.Item
-                                label="lastName"
-                                name="lastName"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input />
-                            </Form.Item>
+                                <Form.Item
+                                    label="lastName"
+                                    name="lastName"
+                                >
+                                    <Input />
+                                </Form.Item>
 
-                            <Form.Item
-                                label="age"
-                                name="age"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input />
-                            </Form.Item>
+                                <Form.Item
+                                    label="age"
+                                    name="age"
+                                >
+                                    <Input />
+                                </Form.Item>
 
-                            <Form.Item
-                                label="email"
-                                name="email"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input />
-                            </Form.Item>
+                                <Form.Item
+                                    label="email"
+                                    name="email"
+                                >
+                                    <Input />
+                                </Form.Item>
 
-                            <Form.Item
-                                label="phone"
-                                name="phone"
-                                rules={[
-                                    {
-                                        required: true,
-                                    },
-                                ]}
-                            >
-                                <Input />
-                            </Form.Item>
+                                <Form.Item
+                                    label="phone"
+                                    name="phone"
+                                >
+                                    <Input />
+                                </Form.Item>
 
-                            <Form.Item label=" ">
+
                                 <Button type="primary" htmlType="submit">
                                     Submit
                                 </Button>
-                            </Form.Item>
-                        </Form>
+
+                            </Form></> : ''}
+
+
                     </Drawer>
 
                     <Table
