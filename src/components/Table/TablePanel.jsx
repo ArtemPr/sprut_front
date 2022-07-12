@@ -76,7 +76,7 @@ const TablePanel = ({ selectedRow }) => {
         // var formValues = { ...values, hidden: hiddenInputValue, id: selectedRow };
         // console.log('form data:', formValues);
         //    var formValues = { id: '5016', name: '1111', type: 'Повышение квалификации', hidden: '15000' }
-        fetch(`http://sprut.niidpo.ru/api/update_program?t=a78c9bd272533646ae84683a2eabb817`, {
+        fetch(`https://sprut.niidpo.ru/api/update_program?t=a78c9bd272533646ae84683a2eabb817`, {
             method: "POST",
             body: JSON.stringify({
                 id: '5016', name: '1111', type: 'Повышение квалификации', hidden: '15000'

@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+1. "react": "^17.0.2", 18 рано
+https://ru.reactjs.org/
+функциональные компоненты, хуки useState, useEffect
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2. create-react-app
+https://create-react-app.dev/
+Разворачивает стандартное приложение на реакте, поменять основные пакеты в package.json:
+"@testing-library/jest-dom": "^5.16.1",
+"@testing-library/react": "^12.1.2",
+"@testing-library/user-event": "^13.5.0",
+"react": "^17.0.2",
+"react-dom": "^17.0.2",
+"react-scripts": "5.0.0",
 
-## Available Scripts
+3. "gh-pages": "^3.2.3",
+https://github.com/gitname/react-gh-pages
+Деплой на гитхаб с развертыванием 
 
-In the project directory, you can run:
 
-### `npm start`
+3. webpack 5
+https://webpack.js.org/
+Вебпак — это сборщик модулей, анализирует модули приложения, создает граф зависимостей, затем собирает модули в правильном порядке в один или более бандл (bundle), на который может ссылаться файл «index.html».
+В create-react-app он явно не виден, но через eject можно руками прописать свои зависимости
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. react-router 6
+https://reactrouter.com/
+Navlink, Router, useParams()
+Роутинг для одностраничного приложения
+Простые защищенные роуты через роуты и useContext()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+5. ant design 4.21.6
+https://ant.design/
+Библиотека реакт-компонентов
+Button https://ant.design/components/button/, 
+Form https://ant.design/components/form/,
+Input, Select,  
+Menu, SubMenu https://ant.design/components/menu/, 
+Pagination https://ant.design/components/pagination/,
+Drawer (выезжающие модалки) https://ant.design/components/drawer/,
+Table https://ant.design/components/table/,
+Icons https://ant.design/components/icon/, 
+Tooltip https://ant.design/components/tooltip/
 
-### `npm test`
+дефолтные переменные тем написаны в .less. Писать проект на .less - надо настраивать webpack, непопулярное решение, по умолчанию стоит sass.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+переопределить дефолтные переменные можно через пакет https://www.npmjs.com/package/@craco/craco
 
-### `npm run build`
+6.styled-components
+https://styled-components.com/
+Для своих кастомных компонентов стоит использовать библитотеку styled-components (создаёт уникальные классы, которые не пересекаются с классами библиотек, например class="sc-runner-15 bZaAjc")
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+7. MobX – менеджер состояния 
+https://mobx.js.org/README.html
+Упрощенная альтернатива Redux

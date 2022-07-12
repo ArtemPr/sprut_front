@@ -37,6 +37,8 @@ const PageLayout = () => {
                                 <NavLink to='/program'>Программы</NavLink>
                             </Menu.Item>
                             <Menu.Item key='3'>Дисциплины</Menu.Item>
+                            <Menu.Item key='7'>
+                                <NavLink to="/test">Test CRUD</NavLink></Menu.Item>
                         </Menu.SubMenu>
                         <Menu.SubMenu title="Панель управления" key='12'>
                             <Menu.Item key='4'><NavLink to='/users'>Пользователи</NavLink></Menu.Item>

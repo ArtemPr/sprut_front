@@ -79,3 +79,7 @@
 .is-selected {
   background-color: rgba(32, 107, 196, 0.25);
 }
+
+.is-selected:hover td {
+  background-color: rgba(32, 107, 196, 0.25) !important;
+}
