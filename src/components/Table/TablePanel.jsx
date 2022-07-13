@@ -51,6 +51,18 @@ const TablePanel = ({ selectedRow }) => {
         }
     ]
 
+    const [rowServerData, setRowServerData] = useState('');
+    const [fgosSelectVisible, setFgosSelectVisible] = useState(false);
+    const [hiddenInputValue, setHiddenInputValue] = useState(100500);
+
+    useEffect(() => {
+        form.setFieldsValue({
+            name: rowServerData ? rowServerData.name : '',
+            type: rowServerData ? rowServerData.program_type.name_type : '',
+            hidden: hiddenInputValue
+        })
+    }, [rowServerData])
+
     async function getH() {
         fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
@@ -97,9 +109,7 @@ const TablePanel = ({ selectedRow }) => {
     let selectedItemUrl = `http://sprut.niidpo.ru/api/program/${selectedRow}?t=a78c9bd272533646ae84683a2eabb817`;
     // console.log(selectedItemUrl);
 
-    const [rowServerData, setRowServerData] = useState('');
-    const [fgosSelectVisible, setFgosSelectVisible] = useState(false);
-    const [hiddenInputValue, setHiddenInputValue] = useState(100500);
+
 
     const setHiddenInput = (data) => {
         let filteredArr = options.filter(option => option.value === data);
@@ -160,8 +170,9 @@ const TablePanel = ({ selectedRow }) => {
                     Удалить
                 </Button>
             </div>
-            <Drawer title="Модальное окно Программы" width="80%" placement="right" onClose={onClose} visible={visible}>
+            <Drawer title="Модальное окно Программы" width="80%" placement="right" onClose={onClose} visible={visible} forceRender={true}>
                 <Form
+                    form={form}
                     layout='vertical'
                     name="basic"
                     labelCol={{
@@ -247,13 +258,9 @@ const TablePanel = ({ selectedRow }) => {
                                             onSelect={(data) => setHiddenInput(data)}
                                         />
                                     </Form.Item>
-
                                     <input type="hidden" name='hidden' value={hiddenInputValue} />
                                 </> : ''}
-
                             </>
-
-
                         </TabPane>
                     </Tabs>
 

@@ -9,7 +9,7 @@ import UsersPage from './pages/UsersPage';
 import ProgramPage from './pages/ProgramPage';
 import NotFoundPage from './pages/NotFoundPage';
 import UsersSinglePage from './pages/UsersSinglePage';
-import TestCRUD from './pages/TestCRUD';
+import TestCRUDPage from './pages/TestCRUDPage';
 
 function App() {
     return (
@@ -20,7 +20,7 @@ function App() {
                     <Route path='/users' element={<UsersPage />} />
                     <Route path='/users/:name' element={<UsersSinglePage />} />
                     <Route path='/program' element={<ProgramPage />} />
-                    <Route path='/test' element={<TestCRUD />} />
+                    <Route path='/test' element={<TestCRUDPage />} />
                     <Route path='*' element={<NotFoundPage />} />
                 </Route>
             </Routes>

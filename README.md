@@ -16,6 +16,8 @@ https://create-react-app.dev/
 https://github.com/gitname/react-gh-pages
 Деплой на гитхаб с развертыванием 
 
+https://artempr.github.io/sprut_front/
+
 
 3. webpack 5
 https://webpack.js.org/
