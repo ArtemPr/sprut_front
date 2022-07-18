@@ -2,7 +2,7 @@
   "name": "react-sprut",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ArtemPr.github.io/sprut_front",
+  "homepage": "https://ArtemPr.github.io/sprut_front/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
